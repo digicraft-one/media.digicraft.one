@@ -7,15 +7,22 @@ import { TiLocationArrow } from "react-icons/ti";
 import Button from "./Button";
 
 const navItems = ["Services", "Story", "About", "Contact"];
+const productDropdownItems = [
+  { name: "Digicraft Tech", href: "https://digicraft.one", logo: "https://www.digicraft.one/logo.svg" },
+  { name: "Dbdash", href: "https://dbdash.live", logo: "https://www.dbdash.live/logo_noBg.png" },
+];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   // Refs for audio and navigation container
   const audioElementRef = useRef(null);
   const navContainerRef = useRef(null);
+  const productButtonRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
@@ -62,6 +69,23 @@ const NavBar = () => {
     });
   }, [isNavVisible]);
 
+  // Handle click outside for dropdown
+  useEffect(() => {
+    if (!isDropdownOpen) return;
+    function handleClickOutside(event) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        productButtonRef.current &&
+        !productButtonRef.current.contains(event.target)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isDropdownOpen]);
+
   return (
     <div
       ref={navContainerRef}
@@ -70,19 +94,48 @@ const NavBar = () => {
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-7 relative">
             <img
               src="/img/logo.png"
               alt="Digicraft Media logo"
               className="w-14 rounded-full"
             />
 
-            <Button
-              id="product-button"
-              title="Products"
-              rightIcon={<TiLocationArrow />}
-              containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
-            />
+            <div className="relative">
+              <div onClick={() => setIsDropdownOpen((prev) => !prev)} ref={productButtonRef}>
+                <Button
+                  id="product-button"
+                  title="Others"
+                  rightIcon={isDropdownOpen ? <TiLocationArrow className="rotate-180 transition-transform duration-300"/> : <TiLocationArrow className="transition-transform duration-300"/>}
+                  containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
+                />
+              </div>
+
+              {isDropdownOpen && (
+                <div
+                  ref={dropdownRef}
+                  className="absolute left-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
+                >
+                  <ul className="py-1">
+                    {productDropdownItems.map((item) => (
+                      <li key={item.name}>
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-1.5 text-gray-700 hover:bg-blue-100 hover:text-blue-900 transition-colors rounded"
+                          style={{ minHeight: '36px' }}
+                          onClick={() => setIsDropdownOpen(false)}
+                        >
+                          <img src={item.logo} alt={item.name + ' logo'} className="w-5 h-5 object-contain" />
+                          <span className="text-sm font-medium">{item.name}</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Navigation Links and Audio Button */}
