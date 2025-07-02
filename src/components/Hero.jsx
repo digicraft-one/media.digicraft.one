@@ -148,16 +148,17 @@ const Hero = () => {
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-100">
+              {/* redefi<b>n</b>e */}
               digicra<b>f</b>t
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Professional video editing for creators, brands, and everyone in between. Your footage, our creativity—let's make something unforgettable.
+              Transforming footage into unforgettable stories—your vision, perfectly edited.
             </p>
 
             <Button
               id="watch-trailer"
-              title="Start your project"
+              title="Edit your video"
               leftIcon={<TiLocationArrow />}
               containerClass="bg-yellow-300 flex-center gap-1"
             />
