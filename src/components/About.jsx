@@ -30,19 +30,18 @@ const About = () => {
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <p className="font-general text-sm uppercase md:text-[10px]">
-          Welcome to DigiCraft
+          Welcome to Digicraft Media
         </p>
 
         <AnimatedTitle
-          title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
+          title="Edit <b>any</b> video, <br /> tell <b>every</b> story with Digicraft Media"
           containerClass="mt-5 !text-black text-center"
         />
 
         <div className="about-subtext">
-          <p>The Game of Games begins—your life, now an epic MMORPG</p>
+          <p>Your vision, our expertise—professional video editing for everyone.</p>
           <p className="text-gray-500">
-            DigiCraft is a platform that allows you to create and share your
-            own games.
+            Digicraft Media turns your raw footage into polished, memorable videos for creators, businesses, and individuals.
           </p>
         </div>
       </div>

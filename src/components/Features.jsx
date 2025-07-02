@@ -103,12 +103,10 @@ const Features = () => (
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
         <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+          Our Video Editing Services
         </p>
         <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+          Digicraft Media offers a full suite of professional video editing services for creators, businesses, and individuals. From social media clips to cinematic storytelling, we bring your vision to life.
         </p>
       </div>
 
@@ -117,11 +115,11 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={
             <>
-              radia<b>n</b>t
+              Social <b>Media</b> Edits
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
-          isComingSoon
+          description="Eye-catching, fast-turnaround edits for TikTok, Instagram, YouTube Shorts, and more. Grow your audience with scroll-stopping content."
+          isComingSoon={false}
         />
       </BentoTilt>
 
@@ -131,11 +129,11 @@ const Features = () => (
             src="videos/feature-2.mp4"
             title={
               <>
-                zig<b>m</b>a
+                Long-form <b>Video</b>
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-            isComingSoon
+            description="Documentaries, vlogs, interviews, and more—crafted for maximum impact and engagement."
+            isComingSoon={false}
           />
         </BentoTilt>
 
@@ -144,11 +142,11 @@ const Features = () => (
             src="videos/feature-3.mp4"
             title={
               <>
-                n<b>e</b>xus
+                Corporate & <b>Brand</b>
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
-            isComingSoon
+            description="Professional edits for businesses: promos, explainers, ads, and branded content that convert viewers into customers."
+            isComingSoon={false}
           />
         </BentoTilt>
 
@@ -157,18 +155,18 @@ const Features = () => (
             src="videos/feature-4.mp4"
             title={
               <>
-                az<b>u</b>l
+                Event <b>Highlights</b>
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-            isComingSoon
+            description="Weddings, conferences, sports, and more—relive your best moments with dynamic highlight reels."
+            isComingSoon={false}
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_2">
           <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
             <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
+              Custom <b>Requests</b> & More
             </h1>
 
             <TiLocationArrow className="m-5 scale-[5] self-end" />

@@ -6,7 +6,7 @@ import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = ["Services", "Story", "About", "Contact"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -73,7 +73,7 @@ const NavBar = () => {
           <div className="flex items-center gap-7">
             <img
               src="/img/logo.png"
-              alt="logo"
+              alt="Digicraft Media logo"
               className="w-14 rounded-full"
             />
 
