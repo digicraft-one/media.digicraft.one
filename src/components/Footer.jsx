@@ -1,10 +1,10 @@
-import { FaDiscord, FaTwitter, FaYoutube, FaMedium } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaLinkedin, FaEnvelope } from "react-icons/fa";
 
 const socialLinks = [
-  { href: "https://discord.com", icon: <FaDiscord /> },
-  { href: "https://twitter.com", icon: <FaTwitter /> },
-  { href: "https://youtube.com", icon: <FaYoutube /> },
-  { href: "https://medium.com", icon: <FaMedium /> },
+  { href: "https://wa.me/+918299797516?text=Hi%21+I%27m+interested+in+your+social+media+services+and+would+love+to+know+more+about+how+you+can+help+me+grow+my+brand+online.+Could+you+please+share+the+details%2C+packages%2C+and+next+steps%3F", icon: <FaWhatsapp /> },
+  { href: "https://www.instagram.com/digicraft_technologies", icon: <FaInstagram /> },
+  { href: "https://www.linkedin.com/company/digicraft-one", icon: <FaLinkedin /> },
+  { href: "mailto:hello@digicraft.one", icon: <FaEnvelope /> },
 ];
 
 const Footer = () => {
@@ -23,65 +23,46 @@ const Footer = () => {
         </div>
 
         {/* Center: Other Links (single section) */}
-        <div className="flex flex-col items-center">
-          {/* <h3 className="text-lg font-semibold text-purple-300 mb-3">
-            Quick Links
-          </h3> */}
-          <ul className="space-y-2 text-sm text-gray-400">
+        <div className="flex flex-col items-center justify-center md:items-center">
+          
+          <ul className="flex flex-wrap justify-center md:justify-start gap-3 md:gap-5">
             <li>
-              <a href="#about" className="hover:text-purple-200 transition duration-300">
+              <a
+                href="#about"
+                className="px-3 py-1 rounded-full bg-white/5 hover:bg-purple-400/20 hover:text-purple-100 text-gray-300 font-medium transition-all duration-200 shadow-sm"
+              >
                 About Us
               </a>
             </li>
             <li>
-              <a href="#services" className="hover:text-purple-200 transition duration-300">
+              <a
+                href="#services"
+                className="px-3 py-1 rounded-full bg-white/5 hover:bg-purple-400/20 hover:text-purple-100 text-gray-300 font-medium transition-all duration-200 shadow-sm"
+              >
                 Services
               </a>
             </li>
             <li>
-              <a href="#projects" className="hover:text-purple-200 transition duration-300">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-purple-200 transition duration-300">
+              <a
+                href="#contact"
+                className="px-3 py-1 rounded-full bg-white/5 hover:bg-purple-400/20 hover:text-purple-100 text-gray-300 font-medium transition-all duration-200 shadow-sm"
+              >
                 Contact
               </a>
             </li>
-            <li>
-              <a href="#privacy-policy" className="hover:text-purple-200 transition duration-300">
-                Privacy Policy
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="flex flex-col items-center">
-          {/* <h3 className="text-lg font-semibold text-purple-300 mb-3">
-            Quick Links
-          </h3> */}
-          <ul className="space-y-2 text-sm text-gray-400">
-            <li>
-              <a href="#about" className="hover:text-purple-200 transition duration-300">
-                About Us
-              </a>
-            </li>
-            <li>
-              <a href="#services" className="hover:text-purple-200 transition duration-300">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="#projects" className="hover:text-purple-200 transition duration-300">
+            {/* <li>
+              <a
+                href="#projects"
+                className="px-3 py-1 rounded-full bg-white/5 hover:bg-purple-400/20 hover:text-purple-100 text-gray-300 font-medium transition-all duration-200 shadow-sm"
+              >
                 Projects
               </a>
-            </li>
+            </li> */}
             <li>
-              <a href="#contact" className="hover:text-purple-200 transition duration-300">
-                Contact
-              </a>
-            </li>
-            <li>
-              <a href="#privacy-policy" className="hover:text-purple-200 transition duration-300">
+              <a
+                href="https://www.digicraft.one/privacy-policy"
+                className="px-3 py-1 rounded-full bg-white/5 hover:bg-purple-400/20 hover:text-purple-100 text-gray-300 font-medium transition-all duration-200 shadow-sm"
+              >
                 Privacy Policy
               </a>
             </li>
@@ -90,7 +71,7 @@ const Footer = () => {
 
         {/* Right: Social Media */}
         <div className="flex flex-col items-center md:items-end">
-          <h3 className="text-lg font-semibold text-purple-300 mb-3">Follow Us</h3>
+          <h3 className="text-lg font-semibold text-purple-300 mb-3">Contact Us</h3>
           <div className="flex gap-4">
             {socialLinks.map((link, index) => (
               <a
@@ -104,6 +85,9 @@ const Footer = () => {
               </a>
             ))}
           </div>
+          <p className="text-sm text-gray-500 mt-1 text-center md:text-left">
+            <a href="tel:+918299797516">+91-8299797516</a> , <a href="tel:+916203785043">+91-6203785043</a>
+          </p>
         </div>
       </div>
     </footer>

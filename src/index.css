@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 *{
-  /* scroll-behavior: smooth; */
+  scroll-behavior: smooth;
   /* transition-duration: 100ms; */
 }
 body {

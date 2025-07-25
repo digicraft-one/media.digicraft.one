@@ -1,25 +1,21 @@
-import clsx from "clsx";
 import gsap from "gsap";
 import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
+import { Link } from "react-router-dom";
 
-const navItems = ["Services", "Story", "About", "Contact"];
+const navItems = ["About", "Services", "Story", "Contact"];
 const productDropdownItems = [
   { name: "Digicraft Tech", href: "https://digicraft.one", logo: "https://www.digicraft.one/logo.svg" },
   { name: "Dbdash", href: "https://dbdash.live", logo: "https://www.dbdash.live/logo_noBg.png" },
 ];
 
 const NavBar = () => {
-  // State for toggling audio and visual indicator
-  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
-  const [isIndicatorActive, setIsIndicatorActive] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
-  // Refs for audio and navigation container
-  const audioElementRef = useRef(null);
+  // Refs for navigation container
   const navContainerRef = useRef(null);
   const productButtonRef = useRef(null);
   const dropdownRef = useRef(null);
@@ -27,21 +23,6 @@ const NavBar = () => {
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-
-  // Toggle audio and visual indicator
-  const toggleAudioIndicator = () => {
-    setIsAudioPlaying((prev) => !prev);
-    setIsIndicatorActive((prev) => !prev);
-  };
-
-  // Manage audio playback
-  useEffect(() => {
-    if (isAudioPlaying) {
-      audioElementRef.current.play();
-    } else {
-      audioElementRef.current.pause();
-    }
-  }, [isAudioPlaying]);
 
   useEffect(() => {
     if (currentScrollY === 0) {
@@ -95,18 +76,19 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7 relative">
-            <img
-              src="/img/logo.png"
-              alt="Digicraft Media logo"
-              className="w-14 rounded-full"
-            />
-
+            <Link to="/">
+              <img
+                src="/img/logo.png"
+                alt="Digicraft Media logo"
+                className="w-14 rounded-full"
+              />
+            </Link>
             <div className="relative">
               <div onClick={() => setIsDropdownOpen((prev) => !prev)} ref={productButtonRef}>
                 <Button
                   id="product-button"
                   title="Others"
-                  rightIcon={isDropdownOpen ? <TiLocationArrow className="rotate-180 transition-transform duration-300"/> : <TiLocationArrow className="transition-transform duration-300"/>}
+                  rightIcon={isDropdownOpen ? <TiLocationArrow className="rotate-180 transition-transform duration-300" /> : <TiLocationArrow className="transition-transform duration-300" />}
                   containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
                 />
               </div>
@@ -151,29 +133,6 @@ const NavBar = () => {
                 </a>
               ))}
             </div>
-
-            <button
-              onClick={toggleAudioIndicator}
-              className="ml-10 flex items-center space-x-0.5"
-            >
-              <audio
-                ref={audioElementRef}
-                className="hidden"
-                src="/audio/loop.mp3"
-                loop
-              />
-              {[1, 2, 3, 4].map((bar) => (
-                <div
-                  key={bar}
-                  className={clsx("indicator-line", {
-                    active: isIndicatorActive,
-                  })}
-                  style={{
-                    animationDelay: `${bar * 0.1}s`,
-                  }}
-                />
-              ))}
-            </button>
           </div>
         </nav>
       </header>

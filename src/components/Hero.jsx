@@ -157,19 +157,21 @@ const Hero = () => {
               Transforming footage into unforgettable stories—your vision, perfectly edited.
             </p>
 
-            <Button
-              id="watch-trailer"
-              title="Edit your video"
-              leftIcon={<TiLocationArrow />}
-              containerClass="bg-yellow-300 flex-center gap-1"
-            />
+            <a href="#contact">
+              <Button
+                id="watch-trailer"
+                title="Edit your video"
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-yellow-300 flex-center gap-1"
+              />
+            </a>
           </div>
         </div>
       </div>
 
       <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black" style={{
-          transformOrigin: "right"
-        }}>
+        transformOrigin: "right"
+      }}>
         {/* G<b>A</b>MING */}
         M<b>E</b>DIA
       </h1>
