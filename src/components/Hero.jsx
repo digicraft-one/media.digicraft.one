@@ -140,8 +140,9 @@ const Hero = () => {
           />
         </div>
 
-        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          {/* G<b>A</b>MING */}
+        <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75 text-right" style={{
+          transformOrigin: "right"
+        }}>
           M<b>E</b>DIA
         </h1>
 
@@ -166,7 +167,9 @@ const Hero = () => {
         </div>
       </div>
 
-      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black">
+      <h1 className="special-font hero-heading absolute bottom-5 right-5 text-black" style={{
+          transformOrigin: "right"
+        }}>
         {/* G<b>A</b>MING */}
         M<b>E</b>DIA
       </h1>

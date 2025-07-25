@@ -1,11 +1,13 @@
 import gsap from "gsap";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
+import ContactFormModal from "./ContactFormModal";
 
 const FloatingImage = () => {
   const frameRef = useRef(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleMouseMove = (e) => {
     const { clientX, clientY } = e;
@@ -109,14 +111,17 @@ const FloatingImage = () => {
               We believe every video is a story waiting to be told. Let Digicraft Media turn your raw footage into a compelling narrative—crafted with care, creativity, and expertise.
             </p>
 
-            <Button
-              id="realm-btn"
-              title="start your story"
-              containerClass="mt-5"
-            />
+            <div onClick={() => setModalOpen(true)}>
+              <Button
+                id="realm-btn"
+                title="start your story"
+                containerClass="mt-5 cursor-pointer"
+              />
+            </div>
           </div>
         </div>
       </div>
+      <ContactFormModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </div>
   );
 };
