@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  /* scroll-behavior: smooth; */
+  /* transition-duration: 100ms; */
+}
 body {
   width: 100dvw;
   overflow-x: hidden;

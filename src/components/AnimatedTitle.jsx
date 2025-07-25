@@ -39,9 +39,9 @@ const AnimatedTitle = ({ title, containerClass }) => {
       {title.split("<br />").map((line, index) => (
         <div
           key={index}
-          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3 word-spacing-[0.25rem]"
+          className="flex-center max-w-full flex-wrap gap-2 px-10 md:gap-3"
           style={{
-            transform: "scaleX(0.85)"
+            transform: "scaleX(0.75)"
           }}
         >
           {line.split(" ").map((word, idx) => (
