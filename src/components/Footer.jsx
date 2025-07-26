@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-8">
         {/* Left: Branding */}
         <div className="flex flex-col items-center md:items-start">
-          <h2 className="text-2xl font-bold text-purple-400">Digicraft Media</h2>
+          <h2 className="text-2xl font-bold text-white"><span className="text-purple-500">Digi</span>Craft <span className="text-amber-400 text-base">Media</span></h2>
           <p className="text-sm text-gray-400 mt-2 text-center md:text-left">
             Empowering Creativity. Elevating Brands.
           </p>

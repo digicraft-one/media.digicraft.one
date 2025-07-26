@@ -46,7 +46,7 @@ const ContactFormModal = ({ open, onClose }) => {
     try {
       // Use a direct URL to avoid redirects that can cause CORS issues
       const apiUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:3000/api/media';
-      
+
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
@@ -90,132 +90,198 @@ const ContactFormModal = ({ open, onClose }) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm">
       <div
         ref={modalRef}
-        className="relative w-full max-w-4xl rounded-xl bg-gray-900 p-8 shadow-lg text-white flex overflow-hidden"
+        className="relative w-full h-full md:w-[90%] rounded-xl bg-gray-900 md:p-8 shadow-lg text-white flex justify-center items-center overflow-hidden md:h-[90%]"
       >
-        {/* Form Section */}
-        <div className="flex-1">
-          <button
-            className="absolute right-4 top-4 text-2xl text-gray-400 hover:text-white focus:outline-none transition-colors"
-            onClick={onClose}
-            aria-label="Close"
-          >
-            &times;
-          </button>
-          <h2 className="mb-6 text-2xl font-bold text-center font-general">Contact Us</h2>
-          <div className="flex flex-col gap-4 pr-4">
-            <div>
-              <label className="block mb-1 font-medium font-general text-xs text-gray-300" htmlFor="name">Name</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 focus:border-violet-500 focus:outline-none transition-colors text-white"
-                placeholder="Your Name"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-1 font-medium font-general text-xs text-gray-300" htmlFor="email">Email</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 focus:border-violet-500 focus:outline-none transition-colors text-white"
-                placeholder="you@email.com"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-1 font-medium font-general text-xs text-gray-300" htmlFor="phone">Phone</label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 focus:border-violet-500 focus:outline-none transition-colors text-white"
-                placeholder="Your Phone Number"
-              />
-            </div>
-            <div>
-              <label className="block mb-1 font-medium font-general text-xs text-gray-300" htmlFor="company">Company Name</label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                value={formData.company}
-                onChange={handleChange}
-                className="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 focus:border-violet-500 focus:outline-none transition-colors text-white"
-                placeholder="Company Name"
-              />
-            </div>
-            <div>
-              <label className="block mb-1 font-medium font-general text-xs text-gray-300" htmlFor="budget">Budget Range</label>
-              <input
-                id="budget"
-                name="budget"
-                type="text"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 focus:border-violet-500 focus:outline-none transition-colors text-white"
-                placeholder="e.g. $1,000 - $5,000"
-              />
-            </div>
-            <div>
-              <label className="block mb-1 font-medium font-general text-xs text-gray-300" htmlFor="description">Description</label>
-              <textarea
-                id="description"
-                name="description"
-                rows={4}
-                value={formData.description}
-                onChange={handleChange}
-                className="w-full rounded border border-gray-700 bg-gray-800 px-3 py-2 focus:border-violet-500 focus:outline-none transition-colors text-white"
-                placeholder="Describe your project or inquiry"
-                required
-              />
-            </div>
+        <section className="bg-gray-900 ">
+          <div className="max-w-6xl mx-auto ">
+            <div className="grid grid-cols-1 md:items-stretch md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-10">
+              <div className="hidden md:flex flex-col justify-between lg:py-5">
+                <div>
+                  <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:leading-tight lg:text-5xl">Let's Create Your Vision</h2>
+                  <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-white">From concept to final cut, our team of expert videographers and editors will bring your story to life with stunning visuals and compelling narratives.</p>
 
-            {submitStatus === 'success' && (
-              <div className="p-2 bg-green-900/50 border border-green-500 rounded text-green-300 text-center">
-                Message sent successfully!
+                  <img className="relative z-10 max-w-xs mx-auto -mb-16 md:hidden" src="https://cdn.rareblocks.xyz/collection/celebration/images/contact/4/curve-line-mobile.svg" alt="" />
+
+                  <img className="hidden w-full translate-x-24 translate-y-8 md:block" src="https://cdn.rareblocks.xyz/collection/celebration/images/contact/4/curve-line.svg" alt="" />
+                </div>
+
+                <div className="hidden md:mt-auto md:block">
+                  <div className="flex items-center">
+                    <svg className="w-6 h-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg className="w-6 h-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg className="w-6 h-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg className="w-6 h-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                    <svg className="w-6 h-6 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                      />
+                    </svg>
+                  </div>
+
+                  <blockquote className="mt-6">
+                    <p className="text-lg leading-relaxed text-white">DigiCraft transformed our brand story into a cinematic masterpiece. Their attention to detail and creative vision exceeded our expectations.</p>
+                  </blockquote>
+                </div>
               </div>
-            )}
 
-            {submitStatus === 'error' && (
-              <div className="p-2 bg-red-900/50 border border-red-500 rounded text-red-300 text-center">
-                Failed to send message. Please try again.
+              <div className="lg:pl-12 md:py-10">
+                <div className="overflow-hidden bg-white rounded-md relative">
+                  <button
+                    className="absolute right-4 top-4 text-2xl text-gray-400 hover:text-gray-600 focus:outline-none transition-colors z-10"
+                    onClick={onClose}
+                    aria-label="Close"
+                  >
+                    &times;
+                  </button>
+                  <div className="p-6 sm:p-10 h-screen md:h-fit flex flex-col justify-center items-center">
+                    <h3 className="text-3xl font-semibold text-black">Start Your Project</h3>
+                    <p className="mt-4 text-base text-gray-600">Share your vision and we'll help bring it to life with our professional video production services.</p>
+
+                    <form className="mt-4">
+                      <div className="space-y-6">
+                        {/* Row 1: Name and Email */}
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label htmlFor="name" className="block text-sm font-medium text-gray-900">Your name</label>
+                            <input
+                              type="text"
+                              name="name"
+                              id="name"
+                              value={formData.name}
+                              onChange={handleChange}
+                              placeholder="Your name"
+                              className="block w-full px-3 py-2 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="email" className="block text-sm font-medium text-gray-900">Email address</label>
+                            <input
+                              type="email"
+                              name="email"
+                              id="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              placeholder="your@email.com"
+                              className="block w-full px-3 py-2 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                              required
+                            />
+                          </div>
+                        </div>
+
+                        {/* Row 2: Phone and Company */}
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label htmlFor="phone" className="block text-sm font-medium text-gray-900">Phone number</label>
+                            <input
+                              type="tel"
+                              name="phone"
+                              id="phone"
+                              value={formData.phone}
+                              onChange={handleChange}
+                              placeholder="Phone number"
+                              className="block w-full px-3 py-2 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                            />
+                          </div>
+                          <div>
+                            <label htmlFor="company" className="block text-sm font-medium text-gray-900">Company</label>
+                            <input
+                              type="text"
+                              name="company"
+                              id="company"
+                              value={formData.company}
+                              onChange={handleChange}
+                              placeholder="Company name"
+                              className="block w-full px-3 py-2 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                            />
+                          </div>
+                        </div>
+
+                        {/* Row 3: Budget */}
+                        <div>
+                          <label htmlFor="budget" className="block text-sm font-medium text-gray-900">Project budget</label>
+                          <input
+                            type="text"
+                            name="budget"
+                            id="budget"
+                            value={formData.budget}
+                            onChange={handleChange}
+                            placeholder="e.g. $2,500 - $10,000"
+                            className="block w-full px-3 py-2 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                          />
+                        </div>
+
+                        {/* Row 4: Description */}
+                        <div>
+                          <label htmlFor="description" className="block text-sm font-medium text-gray-900">Tell us about your project</label>
+                          <textarea
+                            name="description"
+                            id="description"
+                            value={formData.description}
+                            onChange={handleChange}
+                            placeholder="Share your vision, timeline, and any specific requirements"
+                            className="block w-full px-3 py-2 text-sm text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md resize-none focus:outline-none focus:ring-violet-500 focus:border-violet-500"
+                            rows="3"
+                            required
+                          ></textarea>
+                        </div>
+
+                        {submitStatus === 'success' && (
+                          <div className="p-2 bg-green-50 border border-green-500 rounded text-green-700 text-center text-sm">
+                            Thanks! We've received your request and will be in touch soon.
+                          </div>
+                        )}
+
+                        {submitStatus === 'error' && (
+                          <div className="p-2 bg-red-50 border border-red-500 rounded text-red-700 text-center text-sm">
+                            Something went wrong. Please try again or contact us directly.
+                          </div>
+                        )}
+
+                        <div>
+                          <button
+                            type="button"
+                            onClick={handleSubmit}
+                            disabled={isSubmitting}
+                            className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white transition-all duration-200 bg-violet-600 border border-transparent rounded-md focus:outline-none hover:bg-violet-700 focus:bg-violet-700 disabled:opacity-70"
+                          >
+                            {isSubmitting ? "Sending..." : "Get Started"}
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
               </div>
-            )}
 
-            <div onClick={handleSubmit}>
-              <Button
-                title={isSubmitting ? "Sending..." : "Submit"}
-                containerClass="mt-4 w-full"
-                disabled={isSubmitting}
-              />
+              
             </div>
           </div>
-        </div>
-
-        {/* Logo and Tagline Section */}
-        <div className="hidden md:flex md:flex-col md:items-center md:justify-center md:w-1/3 border-l border-gray-700 pl-8">
-          <div className="flex flex-col items-center">
-            <img src="/img/logo.png" alt="DigiCraft Logo" className="w-32 mb-4" />
-            <p className="text-center font-general text-sm text-gray-300 mt-4">Creating digital experiences that inspire</p>
-            <div className="mt-8 border-t border-gray-700 pt-6 w-full">
-              <p className="text-xs text-gray-400 text-center">
-                Premium video production services for brands that want to stand out
-              </p>
-            </div>
-          </div>
-        </div>
+        </section>
       </div>
     </div>
   );
 };
 
 export default ContactFormModal;
+
+
+
+
+

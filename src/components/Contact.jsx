@@ -17,12 +17,12 @@ const Contact = () => {
         <div className="absolute -left-20 top-0 hidden h-full w-72 overflow-hidden sm:block lg:left-20 lg:w-96">
           <img
             src="/img/contact-1.png"
-            clipclass="contact-clip-path-1"
+            className="lg:translate-y-80 translate-y-100"
           />
-          <ImageClipBox
-            src="/img/contact-2.webp"
+          {/* <ImageClipBox
+            src="/img/contact-2.png"
             clipclass="contact-clip-path-2 lg:translate-y-40 translate-y-60"
-          />
+          /> */}
         </div>
 
         <div className="absolute -top-40 left-20 w-60 sm:top-1/2 md:left-auto md:right-10 lg:top-20 lg:w-80">
