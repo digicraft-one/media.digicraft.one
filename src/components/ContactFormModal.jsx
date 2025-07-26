@@ -92,7 +92,7 @@ const ContactFormModal = ({ open, onClose }) => {
         ref={modalRef}
         className="relative w-full h-full md:w-[90%] rounded-xl bg-gray-900 md:p-8 shadow-lg text-white flex justify-center items-center overflow-hidden md:h-[90%]"
       >
-        <section className="bg-gray-900 ">
+        <section className="bg-gray-900">
           <div className="max-w-6xl mx-auto ">
             <div className="grid grid-cols-1 md:items-stretch md:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-10">
               <div className="hidden md:flex flex-col justify-between lg:py-5">
@@ -140,7 +140,9 @@ const ContactFormModal = ({ open, onClose }) => {
                 </div>
               </div>
 
-              <div className="lg:pl-12 md:py-10">
+              <div className="lg:pl-12 md:py-10 overflow-y-auto md:max-h-[95vh] h-auto" style={{
+                scrollbarWidth: 'none',
+              }}>
                 <div className="overflow-hidden bg-white rounded-md relative">
                   <button
                     className="absolute right-4 top-4 text-2xl text-gray-400 hover:text-gray-600 focus:outline-none transition-colors z-10"
@@ -259,18 +261,20 @@ const ContactFormModal = ({ open, onClose }) => {
                             type="button"
                             onClick={handleSubmit}
                             disabled={isSubmitting}
-                            className="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-semibold text-white transition-all duration-200 bg-violet-600 border border-transparent rounded-md focus:outline-none hover:bg-violet-700 focus:bg-violet-700 disabled:opacity-70"
+                            className="inline-flex items-center justify-center w-full text-sm font-semibold text-white transition-all duration-200 bg-violet-600 border border-transparent rounded-full focus:outline-none hover:bg-violet-700 focus:bg-violet-700 disabled:opacity-70"
                           >
-                            {isSubmitting ? "Sending..." : "Get Started"}
+                            {/* {isSubmitting ? "Sending..." : "Get Started"} */}
+
+                            <Button title={isSubmitting ? "Sending..." : "Get Started"} containerClass="bg-violet-600 border border-transparent focus:outline-none hover:bg-violet-700 focus:bg-violet-700 disabled:opacity-70 text-white w-full rounded-full" />
                           </button>
+
+
                         </div>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-
-              
             </div>
           </div>
         </section>
