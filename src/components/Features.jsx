@@ -129,7 +129,7 @@ const Features = () => {
           />
         </BentoTilt>
 
-        <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+        <div className="grid h-[135vh] w-full grid-cols-1 sm:grid-cols-2 grid-rows-3 gap-7">
           <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
               src="videos/feature-2.mp4"
@@ -169,20 +169,20 @@ const Features = () => {
             />
           </BentoTilt>
 
-          <BentoTilt className="bento-tilt_2">
+          <BentoTilt className="bento-tilt_2 col-span-1 h-64 sm:h-auto">
             <div 
               className="flex size-full flex-col justify-between bg-violet-300 p-5 cursor-pointer"
               onClick={() => setModalOpen(true)}
             >
-              <h1 className="bento-title special-font max-w-64 text-black">
+              <h1 className="bento-title special-font max-w-64 text-black text-2xl sm:text-3xl md:text-6xl">
                 Custom <b>Requests</b> & More
               </h1>
 
-              <TiLocationArrow className="m-5 scale-[5] self-end" />
+              <TiLocationArrow className="m-5 scale-[3] sm:scale-[5] self-end" />
             </div>
           </BentoTilt>
 
-          <BentoTilt className="bento-tilt_2">
+          <BentoTilt className="bento-tilt_2 col-span-1 h-64 sm:h-auto">
             <video
               src="videos/feature-5.mp4"
               loop
