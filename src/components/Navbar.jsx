@@ -78,7 +78,7 @@ const NavBar = () => {
           <div className="flex items-center gap-7 relative">
             <Link to="/">
               <img
-                src="/img/logo.png"
+                src="/logo.svg"
                 alt="Digicraft Media logo"
                 className="w-14 rounded-full"
               />
