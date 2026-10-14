@@ -44,7 +44,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="#contact"
+                href="/contact"
                 className="px-3 py-1 rounded-full bg-white/5 hover:bg-purple-400/20 hover:text-purple-100 text-gray-300 font-medium transition-all duration-200 shadow-sm"
               >
                 Contact

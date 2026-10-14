@@ -109,10 +109,10 @@ const Features = () => {
       <div className="container mx-auto px-3 md:px-10">
         <div className="px-5 py-32">
           <p className="font-circular-web text-lg text-blue-50">
-            Our Video Editing Services
+            Our Motion Graphics Editing
           </p>
           <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-            Digicraft Media offers a full suite of professional video editing services for creators, businesses, and individuals. From social media clips to cinematic storytelling, we bring your vision to life.
+            Digicraft Media crafts motion-rich edits for creators, businesses, and individuals—clean cuts, kinetic titles, and graphics that make every video feel designed.
           </p>
         </div>
 
@@ -121,10 +121,10 @@ const Features = () => {
             src="videos/feature-1.mp4"
             title={
               <>
-                Social <b>Media</b> Edits
+                Social <b>Media</b> Motion
               </>
             }
-            description="Eye-catching, fast-turnaround edits for TikTok, Instagram, YouTube Shorts, and more. Grow your audience with scroll-stopping content."
+            description="Reels, Shorts, and TikToks with punchy text, transitions, and effects that stop the scroll—fast turnaround, scroll-stopping polish."
             isComingSoon={false}
           />
         </BentoTilt>
@@ -135,10 +135,10 @@ const Features = () => {
               src="videos/feature-2.mp4"
               title={
                 <>
-                  Long-form <b>Video</b>
+                  Long-form <b>Polish</b>
                 </>
               }
-              description="Documentaries, vlogs, interviews, and more—crafted for maximum impact and engagement."
+              description="Vlogs, interviews, and YouTube videos elevated with lower thirds, animated chapters, and motion that keeps viewers watching."
               isComingSoon={false}
             />
           </BentoTilt>
@@ -151,7 +151,7 @@ const Features = () => {
                   Corporate & <b>Brand</b>
                 </>
               }
-              description="Professional edits for businesses: promos, explainers, ads, and branded content that convert viewers into customers."
+              description="Promos, explainers, and ads with branded motion graphics—clear messaging, sharp design, and edits that convert."
               isComingSoon={false}
             />
           </BentoTilt>
@@ -164,7 +164,7 @@ const Features = () => {
                   Event <b>Highlights</b>
                 </>
               }
-              description="Weddings, conferences, sports, and more—relive your best moments with dynamic highlight reels."
+              description="Weddings, conferences, and sports—dynamic highlight reels with graphic overlays and energy that match the moment."
               isComingSoon={false}
             />
           </BentoTilt>

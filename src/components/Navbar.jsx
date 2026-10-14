@@ -4,20 +4,25 @@ import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
 
 import Button from "./Button";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-const navItems = ["About", "Services", "Story", "Contact"];
-const productDropdownItems = [
-  { name: "Digicraft Tech", href: "https://digicraft.one", logo: "https://www.digicraft.one/logo.svg" },
-  { name: "Dbdash", href: "https://dbdash.live", logo: "https://www.dbdash.live/logo_noBg.png" },
+const navItems = ["About", "Services", "Story"];
+
+const samplesDropdownItems = [
+  { name: "All Samples", to: "/samples" },
+  { name: "Proper Motion Graphics", to: "/samples#samples-motion" },
+  { name: "Motion Graphics with Voice", to: "/samples#samples-voice" },
+  { name: "Recorded Video Editing", to: "/samples#samples-recorded" },
+  { name: "Social & Short-form", to: "/samples#samples-social" },
 ];
 
 const NavBar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
-  // Refs for navigation container
   const navContainerRef = useRef(null);
-  const productButtonRef = useRef(null);
+  const samplesButtonRef = useRef(null);
   const dropdownRef = useRef(null);
 
   const { y: currentScrollY } = useWindowScroll();
@@ -26,15 +31,12 @@ const NavBar = () => {
 
   useEffect(() => {
     if (currentScrollY === 0) {
-      // Topmost position: show navbar without floating-nav
       setIsNavVisible(true);
       navContainerRef.current.classList.remove("floating-nav");
     } else if (currentScrollY > lastScrollY) {
-      // Scrolling down: hide navbar and apply floating-nav
       setIsNavVisible(false);
       navContainerRef.current.classList.add("floating-nav");
     } else if (currentScrollY < lastScrollY) {
-      // Scrolling up: show navbar with floating-nav
       setIsNavVisible(true);
       navContainerRef.current.classList.add("floating-nav");
     }
@@ -50,15 +52,14 @@ const NavBar = () => {
     });
   }, [isNavVisible]);
 
-  // Handle click outside for dropdown
   useEffect(() => {
     if (!isDropdownOpen) return;
     function handleClickOutside(event) {
       if (
         dropdownRef.current &&
         !dropdownRef.current.contains(event.target) &&
-        productButtonRef.current &&
-        !productButtonRef.current.contains(event.target)
+        samplesButtonRef.current &&
+        !samplesButtonRef.current.contains(event.target)
       ) {
         setIsDropdownOpen(false);
       }
@@ -74,7 +75,6 @@ const NavBar = () => {
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
         <nav className="flex size-full items-center justify-between p-4">
-          {/* Logo and Product button */}
           <div className="flex items-center gap-7 relative">
             <Link to="/">
               <img
@@ -84,11 +84,20 @@ const NavBar = () => {
               />
             </Link>
             <div className="relative">
-              <div onClick={() => setIsDropdownOpen((prev) => !prev)} ref={productButtonRef}>
+              <div
+                onClick={() => setIsDropdownOpen((prev) => !prev)}
+                ref={samplesButtonRef}
+              >
                 <Button
-                  id="product-button"
-                  title="Others"
-                  rightIcon={isDropdownOpen ? <TiLocationArrow className="rotate-180 transition-transform duration-300" /> : <TiLocationArrow className="transition-transform duration-300" />}
+                  id="samples-button"
+                  title="Samples"
+                  rightIcon={
+                    isDropdownOpen ? (
+                      <TiLocationArrow className="rotate-180 transition-transform duration-300" />
+                    ) : (
+                      <TiLocationArrow className="transition-transform duration-300" />
+                    )
+                  }
                   containerClass="bg-blue-50 md:flex hidden items-center justify-center gap-1"
                 />
               </div>
@@ -96,22 +105,18 @@ const NavBar = () => {
               {isDropdownOpen && (
                 <div
                   ref={dropdownRef}
-                  className="absolute left-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
+                  className="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50"
                 >
                   <ul className="py-1">
-                    {productDropdownItems.map((item) => (
+                    {samplesDropdownItems.map((item) => (
                       <li key={item.name}>
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-3 py-1.5 text-gray-700 hover:bg-blue-100 hover:text-blue-900 transition-colors rounded"
-                          style={{ minHeight: '36px' }}
+                        <Link
+                          to={item.to}
+                          className="block px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-blue-100 hover:text-blue-900 transition-colors"
                           onClick={() => setIsDropdownOpen(false)}
                         >
-                          <img src={item.logo} alt={item.name + ' logo'} className="w-5 h-5 object-contain" />
-                          <span className="text-sm font-medium">{item.name}</span>
-                        </a>
+                          {item.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -120,19 +125,26 @@ const NavBar = () => {
             </div>
           </div>
 
-          {/* Navigation Links and Audio Button */}
-          <div className="flex h-full items-center">
+          <div className="flex h-full items-center gap-2">
             <div className="hidden md:block">
               {navItems.map((item, index) => (
-                <a
+                <Link
                   key={index}
-                  href={`#${item.toLowerCase()}`}
+                  to={isHome ? `#${item.toLowerCase()}` : `/#${item.toLowerCase()}`}
                   className="nav-hover-btn"
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </div>
+            <Link to="/contact" className="ms-4 md:ms-8">
+              <Button
+                id="contact-nav-button"
+                title="Contact"
+                leftIcon={<TiLocationArrow />}
+                containerClass="bg-yellow-300 flex items-center justify-center gap-1"
+              />
+            </Link>
           </div>
         </nav>
       </header>

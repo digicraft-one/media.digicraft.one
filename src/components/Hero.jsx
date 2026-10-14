@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/all";
 import { TiLocationArrow } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
 
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import VideoPreview from "./VideoPreview";
 
@@ -12,22 +13,39 @@ gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
-
-  const [loading, setLoading] = useState(true);
-  const [loadedVideos, setLoadedVideos] = useState(0);
+  const [posterReady, setPosterReady] = useState(false);
 
   const totalVideos = 4;
   const nextVdRef = useRef(null);
 
-  const handleVideoLoad = () => {
-    setLoadedVideos((prev) => prev + 1);
-  };
+  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
+  const getPosterSrc = (index) => `img/hero-${index}.webp`;
+
+  const nextIndex = (currentIndex % totalVideos) + 1;
+  const mainIndex =
+    currentIndex === totalVideos - 1 ? 1 : currentIndex;
 
   useEffect(() => {
-    if (loadedVideos === totalVideos - 1) {
-      setLoading(false);
+    let cancelled = false;
+    setPosterReady(false);
+
+    const img = new Image();
+    img.src = getPosterSrc(mainIndex);
+    const markReady = () => {
+      if (!cancelled) setPosterReady(true);
+    };
+
+    if (img.complete) {
+      markReady();
+    } else {
+      img.onload = markReady;
+      img.onerror = markReady;
     }
-  }, [loadedVideos]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [mainIndex]);
 
   const handleMiniVdClick = () => {
     setHasClicked(true);
@@ -80,24 +98,17 @@ const Hero = () => {
     });
   });
 
-  const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
-
   return (
-    <div className="relative h-dvh w-screen overflow-x-hidden">
-      {loading && (
-        <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
-          {/* https://uiverse.io/G4b413l/tidy-walrus-92 */}
-          <div className="three-body">
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-            <div className="three-body__dot"></div>
-          </div>
-        </div>
-      )}
-
+    <div
+      className={`relative h-dvh w-screen overflow-x-hidden ${
+        posterReady ? "" : "bg-black"
+      }`}
+    >
       <div
         id="video-frame"
-        className="relative z-10 h-dvh w-screen overflow-hidden rounded-lg bg-blue-75"
+        className={`relative z-10 h-dvh w-screen overflow-hidden rounded-lg ${
+          posterReady ? "bg-blue-75" : "bg-black"
+        }`}
       >
         <div>
           <div className="mask-clip-path absolute-center absolute z-50 size-64 cursor-pointer overflow-hidden rounded-lg">
@@ -108,12 +119,14 @@ const Hero = () => {
               >
                 <video
                   ref={nextVdRef}
-                  src={getVideoSrc((currentIndex % totalVideos) + 1)}
+                  src={getVideoSrc(nextIndex)}
+                  poster={getPosterSrc(nextIndex)}
                   loop
                   muted
+                  playsInline
+                  preload="metadata"
                   id="current-video"
                   className="size-64 origin-center scale-150 object-cover object-center"
-                  onLoadedData={handleVideoLoad}
                 />
               </div>
             </VideoPreview>
@@ -122,21 +135,23 @@ const Hero = () => {
           <video
             ref={nextVdRef}
             src={getVideoSrc(currentIndex)}
+            poster={getPosterSrc(currentIndex)}
             loop
             muted
+            playsInline
+            preload="metadata"
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
-            onLoadedData={handleVideoLoad}
           />
           <video
-            src={getVideoSrc(
-              currentIndex === totalVideos - 1 ? 1 : currentIndex
-            )}
+            src={getVideoSrc(mainIndex)}
+            poster={getPosterSrc(mainIndex)}
             autoPlay
             loop
             muted
+            playsInline
+            preload="auto"
             className="absolute left-0 top-0 size-full object-cover object-center"
-            onLoadedData={handleVideoLoad}
           />
         </div>
 
@@ -154,17 +169,17 @@ const Hero = () => {
             </h1>
 
             <p className="mb-5 max-w-64 font-robert-regular text-blue-100">
-              Transforming footage into unforgettable stories—your vision, perfectly edited.
+              Motion graphics–led edits that make your clips look designed—not just cut.
             </p>
 
-            <a href="#contact">
+            <Link to="/pricing">
               <Button
                 id="watch-trailer"
-                title="Edit your video"
+                title="See pricing"
                 leftIcon={<TiLocationArrow />}
                 containerClass="bg-yellow-300 flex-center gap-1"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

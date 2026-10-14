@@ -34,14 +34,14 @@ const About = () => {
         </p>
 
         <AnimatedTitle
-          title="Edit <b>any</b> video, <br /> tell <b>every</b> story with Digicraft Media"
+          title="Design <b>any</b> edit, <br /> animate <b>every</b> story with Digicraft Media"
           containerClass="mt-5 !text-black text-center"
         />
 
         <div className="about-subtext">
-          <p>Your vision, our expertise—professional video editing for everyone.</p>
+          <p>Your clips, our craft—motion graphics editing for creators and everyday brands.</p>
           <p className="text-gray-500">
-            Digicraft Media turns your raw footage into polished, memorable videos for creators, businesses, and individuals.
+            Digicraft Media turns raw footage into polished videos with titles, effects, and motion that feel intentional.
           </p>
         </div>
       </div>

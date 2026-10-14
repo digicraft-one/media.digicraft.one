@@ -51,12 +51,12 @@ const FloatingImage = () => {
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
       <div className="flex size-full flex-col items-center py-10 pb-24">
         <p className="font-general text-sm uppercase md:text-[10px]">
-          every video has a story
+          every edit deserves motion
         </p>
 
         <div className="relative size-full">
           <AnimatedTitle
-            title="your st<b>o</b>ry, <br /> beautifully <b>e</b>dited"
+            title="your st<b>o</b>ry, <br /> designed in <b>m</b>otion"
             containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
           />
 
@@ -108,13 +108,13 @@ const FloatingImage = () => {
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
             <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
-              We believe every video is a story waiting to be told. Let Digicraft Media turn your raw footage into a compelling narrative—crafted with care, creativity, and expertise.
+              Raw clips become designed stories. Digicraft Media layers motion graphics, titles, and polish so your edit feels crafted—not just assembled.
             </p>
 
             <div onClick={() => setModalOpen(true)}>
               <Button
                 id="realm-btn"
-                title="start your story"
+                title="start your edit"
                 containerClass="mt-5 cursor-pointer"
               />
             </div>
