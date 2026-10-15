@@ -3,56 +3,57 @@ import { useLocation } from "react-router-dom";
 import NavBar from "./Navbar";
 import Footer from "./Footer";
 
+const featuredVideos = [
+  { id: "qPlGLVxVLII", title: "Sample 1" },
+  { id: "7J-oFgSxlwA", title: "Sample 2" },
+  { id: "r3oGMEJvaek", title: "Sample 3" },
+];
+
 const categories = [
   {
     id: "samples-motion",
     title: "Proper Motion Graphics",
     description:
       "Full motion design—kinetic titles, animated layouts, and graphic-driven sequences built from scratch.",
-    items: [
-      "/gallery/1.webp",
-      "/gallery/4.webp",
-      "/gallery/12.webp",
-      "/gallery/23.webp",
-    ],
+    videos: [{ id: "qPlGLVxVLII", title: "Motion Graphics sample" }],
   },
   {
     id: "samples-voice",
     title: "Motion Graphics with Voice",
     description:
       "Voice-led edits with timed captions, animated text, and motion that follows the narration.",
-    items: [
-      "/gallery/2.webp",
-      "/gallery/7.webp",
-      "/gallery/15.webp",
-      "/gallery/28.webp",
-    ],
+    videos: [{ id: "7J-oFgSxlwA", title: "Motion + Voice sample" }],
   },
   {
     id: "samples-recorded",
     title: "Recorded Video Editing",
     description:
       "Your already-shot footage—cleaned up, paced, and elevated with graphics, titles, and polish.",
-    items: [
-      "/gallery/3.webp",
-      "/gallery/10.webp",
-      "/gallery/18.webp",
-      "/gallery/25.webp",
-    ],
+    videos: [{ id: "r3oGMEJvaek", title: "Recorded edit sample" }],
   },
   {
     id: "samples-social",
     title: "Social & Short-form",
     description:
       "Reels, Shorts, and TikToks with punchy text, transitions, and scroll-stopping motion.",
-    items: [
-      "/gallery/5.webp",
-      "/gallery/14.webp",
-      "/gallery/21.webp",
-      "/gallery/29.webp",
-    ],
+    videos: [],
   },
 ];
+
+const YoutubeEmbed = ({ videoId, title }) => (
+  <div className="aspect-video overflow-hidden rounded-md border border-white/10 bg-black">
+    <iframe
+      className="size-full"
+      src={`https://www.youtube.com/embed/${videoId}`}
+      title={title}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+      loading="lazy"
+    />
+  </div>
+);
 
 const Samples = () => {
   const location = useLocation();
@@ -68,7 +69,6 @@ const Samples = () => {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     };
 
-    // Wait a tick so the page has painted before scrolling
     const timer = window.setTimeout(scrollToSection, 80);
     return () => window.clearTimeout(timer);
   }, [location.pathname, location.hash]);
@@ -79,6 +79,24 @@ const Samples = () => {
 
       <section id="samples" className="bg-black pb-24 pt-28 scroll-mt-24">
         <div className="container mx-auto px-3 md:px-10">
+          <div className="mb-16 px-5 md:mb-24 md:px-0">
+            <h1 className="special-font font-zentry text-4xl uppercase text-blue-50 md:text-6xl">
+              Sample <b>Work</b>
+            </h1>
+            <p className="mt-3 max-w-md font-circular-web text-sm text-blue-50/60 md:text-base">
+              Digicraft Media edits—streamed in adaptive quality via YouTube.
+            </p>
+
+            <div className="mt-10 grid gap-5 md:grid-cols-3">
+              {featuredVideos.map((video) => (
+                <YoutubeEmbed
+                  key={video.id}
+                  videoId={video.id}
+                  title={video.title}
+                />
+              ))}
+            </div>
+          </div>
 
           <div className="flex flex-col gap-20 md:gap-28">
             {categories.map((category) => (
@@ -107,21 +125,21 @@ const Samples = () => {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-5">
-                  {category.items.map((src) => (
-                    <div
-                      key={src}
-                      className="aspect-[3/4] overflow-hidden rounded-md border border-white/10 bg-black"
-                    >
-                      <img
-                        src={src}
-                        alt={`${category.title} sample`}
-                        className="size-full object-cover"
-                        loading="lazy"
+                {category.videos.length > 0 ? (
+                  <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                    {category.videos.map((video) => (
+                      <YoutubeEmbed
+                        key={`${category.id}-${video.id}`}
+                        videoId={video.id}
+                        title={video.title}
                       />
-                    </div>
-                  ))}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="rounded-md border border-dashed border-white/15 px-4 py-8 text-sm text-blue-50/40">
+                    More samples coming soon in this category.
+                  </p>
+                )}
               </div>
             ))}
           </div>
